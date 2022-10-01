@@ -16,5 +16,7 @@ The screener this project is based  is called the magic formula on comes from th
 
 ## References
 ```
-Greenblatt J. The Little Book That Still Beats the Market. Hoboken N.J: J. Wiley & Sons; 2010. http://site.ebrary.com/id/10419167. Accessed October 1 2022.
+Greenblatt J. The Little Book That Still Beats the Market. 
+Hoboken N.J: J. Wiley & Sons; 2010. http://site.ebrary.com/id/10419167. 
+Accessed October 1 2022.
 ```
