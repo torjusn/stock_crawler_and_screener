@@ -21,3 +21,5 @@ Greenblatt J. The Little Book That Still Beats the Market.
 Hoboken N.J: J. Wiley & Sons; 2010. http://site.ebrary.com/id/10419167. 
 Accessed October 1 2022.
 ```
+
+Special thanks to my colleague Thomas for giving me the opportunity to assist him in his stock adventures.
