@@ -1,4 +1,4 @@
-# Capital financial stock crawler and screener
+# Capital Stock Crawler and Screener
 ![frontpage](images/frontpage.png)
 
 ## Introduction
