@@ -16,8 +16,8 @@ Crawling is the process of obtaining the metrics needed to perform a prediction 
 - If a stock has a very low P/E ratio, say 5 or less, that may indicate that the previous year or the data being used are unusual in some way. You may want to eliminate these stocks from your list. You may also want to eliminate any company that has announced earnings in the last week. (This should help minimize the incidence of incorrect or untimely data.)
 - After obtaining your list, follow steps 4 and 8 from the magicformulainvesting.com instructrions.
 
-Summarized Metrics needed:
-ROA, P/E, company type, nationality.
+Summarized Metrics needed:  
+`ROA`, `P/E`, `company type`, `company nationality`.
 
 ## References
 ```
