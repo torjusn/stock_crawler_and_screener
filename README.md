@@ -8,8 +8,13 @@ The philosophy behind this screener is to find a set of companies that on averag
 
 Crawling is the process of obtaining the metrics needed to perform a prediction algoriithm. This can be done by API for publically available financial sites such as Morningstar or Yahoo finance. In this project we will be using Python for both the screener and the crawler parts.
 
+## Prerequisites
+
+## Usage
+
+
 ## Vanilla Screening Algorithm
-- Use return on assets (ROA) as a screening criterion. Set the minimum ROA at 25%. (This will take the place of return on captial from the magic formula study.)
+- Use return on assets (ROA) as a screening criterion. Return on assets is defined as Net Income/ Average Total Assets. Set the minimum ROA at 25%. (This will take the place of return on captial from the magic formula study.)
 - From the resulting group of high ROA stocks, screen for thos estocks with the lowest price/earning (P/E) ratios. (This will take the place of earnings yield from the magic formula study.)
 - Eliminate all utilities and financial stocks (i.e., mutual funds, banks, and insurance companies) from the list.
 - Eliminate all foregin companies from the list. In most cases these will have the suffix "ADR" (for "American Depository Recepeit") after the name of the stock.
