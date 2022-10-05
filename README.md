@@ -1,6 +1,14 @@
 # Capital Stock Crawler and Screener
 ![frontpage](images/frontpage.png)
 
+## TODO
+- [ ] Ticker through all relevant NASDAQ codes
+- [ ] Screening Algorithm
+- [ ] Docker containerization
+- [ ] PostgreSQL Database (persistant storage)
+- [ ] Datapipeline python to PSQL
+
+
 ## Introduction
 A stock screener uses a set of metrics to decide on which companies to invest in to predict the best possible return on investments. The screener this project is based on is called `Option 2: General Screening Instructions` and is an extended generalization of the main algorithm of the book `The Little Book That Beats the Market` by Joel Greenblatt that can be used without the books dedicated [stock screener website](https://www.magicformulainvesting.com/).
 
