@@ -39,6 +39,9 @@ fjern
 FILE_DIR = Path(__file__).parent
 DATA_DIR = FILE_DIR / "data"
 
+DBNAME = "stocks"
+DBUSER = "postgres"
+
 # list of all nasdaq listed companies from csv
 # https://www.nasdaq.com/market-activity/stocks/screener
 nasdaq_path = DATA_DIR / "nasdaq_screener_1665505677186.csv"
@@ -47,6 +50,57 @@ nasdaq_df = pd.read_csv(nasdaq_path)
 # get all symbols of nasdaq listed companies
 nasdaq_symbols = nasdaq_df["Symbol"]
 nasdaq_symbols = nasdaq_symbols.values.tolist()
+
+
+def write_to_db(dbname, dbuser, query):
+
+    # Connect to an existing database
+    with psycopg.connect(f"dbname={dbname} user={dbuser}") as conn:
+
+        # Open a cursor to perform database operations
+        with conn.cursor() as cur:
+
+            # Execute a command
+            cur.execute(query)
+
+            # Make the changes to the database persistent
+            conn.commit()
+
+
+def read_from_db(dbname, dbuser, query):
+
+    # Connect to an existing database
+    with psycopg.connect(f"dbname={dbname} user={dbuser}") as conn:
+
+        # Open a cursor to perform database operations
+        with conn.cursor() as cur:
+
+            # Query the database and obtain data as Python objects.
+            cur.execute(query)
+            data = cur.fetchall()
+
+    return data
+
+
+def get_write_query(nasdaq_code, company_name, selection_date):
+
+    query = """
+    INSERT INTO metadata.tracked_stocks
+    VALUES 
+        ();
+    """
+
+    return query
+
+
+# TODO move to other script
+def get_read_query():
+    """
+    query function for order
+    """
+    query = """SELECT * FROM metadata.tracked_stocks"""
+
+    return query
 
 
 def get_nasdaq_stocklist():
