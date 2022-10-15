@@ -12,9 +12,6 @@ import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-# finance api
-import yfinance as yf
-
 # data
 import pandas as pd
 
@@ -27,6 +24,7 @@ from functions import (
     get_batched_nasdaq_codes,
     write_to_db,
     get_screened_stocks,
+    load_stock_data,
 )
 
 parser = argparse.ArgumentParser(description="Screen and save stocks to DB")
@@ -41,7 +39,7 @@ parser.add_argument(
 # hyperparams
 parser.add_argument(
     "--stocks-per-screening",
-    default=1999,
+    default=3,
     type=int,
     metavar="",
     help="limit stocks screened per batch as yfinance cap number of requests per hour per ip",
@@ -136,50 +134,40 @@ def main():
         nasdaq_codes, args.stocks_per_screening
     )
 
+    batch_count = len(nasdaq_codes_batched)
+
     logger.info(
         f"Screening [{len(nasdaq_codes)}] stocks in [{len(nasdaq_codes_batched)}] batches"
     )
 
     for batch_idx, current_nasdaq_codes in enumerate(nasdaq_codes_batched):
-        print(codes)
-        print(len(codes))
+        # print(current_nasdaq_codes)
+        # print(len(current_nasdaq_codes))
 
-        # TODO uncomment
-        # wait one hour
-        # time.sleep(3600 + 1)
-        exit()
+        # dont wait final iteration
+        if (batch_idx + 1) < len(nasdaq_codes_batched):
 
-    get_screened_stocks(stock_df)
+            df = load_stock_data(current_nasdaq_codes)
+
+            # TODO uncomment
+
+            # yahoo finance free public API is limited to 2.000 requests per hour per IP adress
+            # loop through 1999 ~hour until stack is emptied.
+            # time.sleep(3600 + 1)
 
     logger.info("Finished Script")
 
-    # yahoo finance free public API is limited to 2.000 requests per hour per IP adress
-    # loop through 1999 ~hour until stack is emptied.
+    exit()
+
+    get_screened_stocks(stock_df)
+
     stock_ticker = yf.Ticker("AAPL", "GOOG")
-
-    info_dict = stock_ticker.info
-
-    # info includes return on assets, trailingEps (Price to earnings)
-    info_dict = stock_ticker.info
-    keys = ["returnOnAssets", "fullTimeEmployees"]
-    for key in keys:
-        test = info_dict[key]
-        print(test)
 
     if args.save_to_db:
         write_query = get_write_query()
         write_to_db(write_query)
         print("hade")
 
-    # return_on_assets =
-    # print(return_on_assets)
-
-    price_to_earnings_ratio = info_dict["trailingEps"]
-
-    # financials includes net income
-    # financials_df = stock_ticker.get_financials()
-    # get first element, i.e. most recent quarters net income
-    # net_income = financials_df.loc["Net Income"][0]
     return
 
 
